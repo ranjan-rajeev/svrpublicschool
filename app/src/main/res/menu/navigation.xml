@@ -7,16 +7,12 @@
         android:title="@string/title_home" />
 
 
+    <!-- <item
+         android:visible="false"
+         android:id="@+id/navigation_about_us"
+         android:icon="@drawable/ic_dashboard_black_24dp"
+         android:title="ABOUT US" />-->
 
-    <item
-        android:id="@+id/navigation_about_us"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="ABOUT US" />
-
-    <item
-        android:id="@+id/navigation_facility"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="FACILITY" />
 
     <item
         android:id="@+id/navigation_faculty"
@@ -27,13 +23,16 @@
         android:id="@+id/navigation_gallery"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="GALLERY" />
+    <item
+        android:id="@+id/navigation_facility"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="FACILITY" />
 
-    <!--<item
-        android:visible="false"
+    <item
         android:id="@+id/navigation_contact"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="CONTACT" />-->
-
+        android:title="CONTACT"
+        android:visible="true" />
 
 
 </menu>

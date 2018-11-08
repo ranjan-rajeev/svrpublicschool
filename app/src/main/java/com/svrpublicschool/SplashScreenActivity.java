@@ -5,7 +5,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SplashScreenActivity extends AppCompatActivity {
+import com.svrpublicschool.home.MainActivity;
+
+public class SplashScreenActivity extends BaseActivity {
 
     private final int SPLASH_DISPLAY_LENGTH = 1000;
 
