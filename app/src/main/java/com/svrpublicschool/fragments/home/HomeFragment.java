@@ -28,8 +28,8 @@ public class HomeFragment extends BaseFragment {
             "https://c1.staticflickr.com/5/4889/45746110872_5c96e1df01_o.jpg"};
     TextView tvAdmisson;
     ImageView ivSchool;
-    RecyclerView rvFacility;
-    HomeAdapter homeAdapter;
+    RecyclerView rvFacility, rvRule;
+    HomeAdapter homeAdapter, ruleAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,20 +53,36 @@ public class HomeFragment extends BaseFragment {
     private void bindRecyclerView() {
         homeAdapter = new HomeAdapter(this, getLIst());
         rvFacility.setAdapter(homeAdapter);
+
+        ruleAdapter = new HomeAdapter(this, getRuleLIst());
+        rvRule.setAdapter(ruleAdapter);
     }
 
     public List<HomeDescEntity> getLIst() {
         List<HomeDescEntity> list = new ArrayList<>();
 
-        list.add(new HomeDescEntity("Hostel Rules & Regulation", ""));
-        list.add(new HomeDescEntity("Hostel Facility", ""));
-        list.add(new HomeDescEntity("Medical Facility", ""));
+        list.add(new HomeDescEntity("Sports Facility", getResources().getString(R.string.sports)));
+        list.add(new HomeDescEntity("Transport Facility", getResources().getString(R.string.transport_facility)));
+        //list.add(new HomeDescEntity("Medical Facility", ""));
+        list.add(new HomeDescEntity("Library", getResources().getString(R.string.library)));
+        list.add(new HomeDescEntity("Computer Labs", getResources().getString(R.string.computer_lab)));
+        list.add(new HomeDescEntity("Smart Classes", getResources().getString(R.string.smart_classes)));
+        return list;
+    }
+
+    public List<HomeDescEntity> getRuleLIst() {
+        List<HomeDescEntity> list = new ArrayList<>();
+
+        list.add(new HomeDescEntity("School Discipline", getResources().getString(R.string.discpline)));
+        list.add(new HomeDescEntity("Guardian’s Role", getResources().getString(R.string.parent_role)));
+        /*list.add(new HomeDescEntity("Medical Facility", ""));
         list.add(new HomeDescEntity("Well Maintained School", ""));
         list.add(new HomeDescEntity("Recreation", ""));
         list.add(new HomeDescEntity("Sports", ""));
-        list.add(new HomeDescEntity("Clothing Items for Boarding", ""));
+        list.add(new HomeDescEntity("Clothing Items for Boarding", ""));*/
         return list;
     }
+
 
     private void setListener() {
     }
@@ -105,5 +121,9 @@ public class HomeFragment extends BaseFragment {
         Glide.with(this).load("https://c1.staticflickr.com/5/4851/45746110222_f877bdfa5e_o.jpg").into(ivSchool);
         rvFacility = view.findViewById(R.id.rvFacility);
         rvFacility.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        rvRule = view.findViewById(R.id.rvRule);
+        rvRule.setLayoutManager(new LinearLayoutManager(getActivity()));
+
     }
 }

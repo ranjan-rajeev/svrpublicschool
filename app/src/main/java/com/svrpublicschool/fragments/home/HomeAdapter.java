@@ -44,7 +44,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.NavigationItem
             final NavigationItem item = (NavigationItem) holder;
             HomeDescEntity homeDescEntity = mAppList.get(position);
             item.tvTitle.setText(homeDescEntity.getTitle());
-            item.tvDesc.setText(R.string.hostel_rules);
+            item.tvDesc.setText(homeDescEntity.getDesc());
         }
 
     }
