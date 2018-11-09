@@ -23,6 +23,7 @@ public class ZoomActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         url = getIntent().getExtras().getString("URL");
+        url = "http://www.svrpublicschool.com/images/building.jpg";
         ivZoom = findViewById(R.id.ivZoom);
         Glide.with(this)
                 .load(url)
@@ -32,14 +33,6 @@ public class ZoomActivity extends AppCompatActivity {
                 //.skipMemoryCache(true)
                 //.override(200, 200)
                 .into(ivZoom);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

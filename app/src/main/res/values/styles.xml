@@ -23,4 +23,54 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="TextViewStyle" parent="android:style/Widget.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/secondary_text_color</item>
+    </style>
+
+    <style name="TextViewStyle.ExtraLarge" parent="TextViewStyle">
+        <item name="android:textSize">@dimen/text_size_extra_large</item>
+        <item name="android:textColor">@color/blue_descent</item>
+
+    </style>
+
+    <style name="TextViewStyle.Large" parent="TextViewStyle">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textColor">@color/uvv_black</item>
+
+    </style>
+
+    <style name="TextViewStyle.Medium" parent="TextViewStyle">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/header_dark_text</item>
+    </style>
+
+
+    <style name="TextViewStyle.Small" parent="TextViewStyle">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/header_light_text</item>
+    </style>
+
+    <style name="TextViewStyle.VerySmall" parent="TextViewStyle">
+        <item name="android:textSize">@dimen/text_size_extra_small</item>
+        <item name="android:textColor">@color/description_text</item>
+
+    </style>
+
+
+    <style name="MyTextInputLayout" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="CustomTextInputLayout" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textColorHint">@color/description_text</item>
+        <item name="android:textColor">@color/uvv_black</item>
+
+    </style>
 </resources>

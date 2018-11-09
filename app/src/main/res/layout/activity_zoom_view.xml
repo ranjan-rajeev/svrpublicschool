@@ -5,16 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".fragments.gallery.ZoomActivity"
-    tools:showIn="@layout/activity_zoom">
+    tools:context=".fragments.gallery.ZoomViewActivity">
+
 
     <com.svrpublicschool.customview.TouchImageView
         android:id="@+id/ivZoom"
-        android:layout_width="500dp"
-        android:layout_height="500dp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/circle_white"
+        android:visibility="gone" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content" />
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

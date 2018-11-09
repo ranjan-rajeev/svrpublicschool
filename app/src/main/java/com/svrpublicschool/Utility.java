@@ -264,4 +264,20 @@ public class Utility {
             return typedValue.data;
         }
     }
+
+    public static int getAccentColor(Context context) {
+        TypedValue typedValue = new TypedValue();
+
+        // I used getActivity() as if you were calling from a fragment.
+        // You just want to call getTheme() on the current activity, however you can get it
+        context.getTheme().resolveAttribute(android.R.attr.colorAccent, typedValue, true);
+
+        // it's probably a good idea to check if the color wasn't specified as a resource
+        if (typedValue.resourceId != 0) {
+            return typedValue.resourceId;
+        } else {
+            // this should work whether there was a resource id or not
+            return typedValue.data;
+        }
+    }
 }

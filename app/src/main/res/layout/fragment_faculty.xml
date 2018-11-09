@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     android:orientation="vertical">
 
     <TextView
@@ -21,15 +19,18 @@
         android:singleLine="true"
         android:text="ADMISSION IS GOING ON 2018-19!!!                              ADMISSION IS GOING ON 2018-19!!! "
         android:textColor="@color/white" />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvGallery"
+    <TextView
+        style="@style/TextViewStyle.ExtraLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:padding="@dimen/item_offset" />
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="MEET OUR TEAM"
+        android:textStyle="bold" />
 
-    <com.svrpublicschool.customview.TouchImageView
-        android:id="@+id/ivZoom"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvFaculty"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:clipToPadding="false" />
 </LinearLayout>

@@ -23,11 +23,12 @@ import android.widget.Button;
 import com.svrpublicschool.BaseActivity;
 import com.svrpublicschool.R;
 import com.svrpublicschool.database.DatabaseController;
-import com.svrpublicschool.fragments.ContactFragment;
-import com.svrpublicschool.fragments.FacilityFragment;
-import com.svrpublicschool.fragments.FacultyFragment;
+import com.svrpublicschool.fragments.aboutus.AboutUsFragment;
+import com.svrpublicschool.fragments.contact.ContactFragment;
+import com.svrpublicschool.fragments.facility.FacilityFragment;
+import com.svrpublicschool.fragments.faculty.FacultyFragment;
 import com.svrpublicschool.fragments.gallery.GalleryFragment;
-import com.svrpublicschool.fragments.HomeFragment;
+import com.svrpublicschool.fragments.home.HomeFragment;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,6 +66,13 @@ public class MainActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        loadHomeFragment();
+    }
+
+    private void loadHomeFragment() {
+        bottom_navigation.setSelectedItemId(R.id.navigation_home);
+        //View view = bottom_navigation.findViewById(R.id.navigation_home);
+        //view.performClick();
     }
 
     private void setListener() {
@@ -173,21 +181,34 @@ public class MainActivity extends BaseActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
+        Fragment fragment = null;
+        if (id == R.id.nav_home) {
             // Handle the camera action
+            fragment = new HomeFragment();
+        } else if (id == R.id.nav_faculty) {
+            fragment = new FacultyFragment();
         } else if (id == R.id.nav_gallery) {
+            fragment = new GalleryFragment();
+        } else if (id == R.id.nav_facility) {
+            fragment = new FacilityFragment();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_gallery) {
+            fragment = new GalleryFragment();
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_contact) {
+            fragment = new ContactFragment();
 
-        } else if (id == R.id.nav_share) {
+        }else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        }else if (id == R.id.nav_aboutus) {
+            fragment = new AboutUsFragment();
         }
 
+        if (fragment != null) {
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, fragment);
+            fragmentTransaction.commit();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

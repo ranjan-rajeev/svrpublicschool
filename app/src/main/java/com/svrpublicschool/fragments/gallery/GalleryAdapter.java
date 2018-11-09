@@ -52,7 +52,9 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.Navigati
             item.rlParent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mContex.getActivity().startActivity(new Intent(mContex.getActivity(), ZoomActivity.class)
+
+                   // ((GalleryFragment)mContex).openZoomView(mAppList.get(position));
+                    mContex.getActivity().startActivity(new Intent(mContex.getActivity(), ZoomViewActivity.class)
                             .putExtra("URL", mAppList.get(position)));
                 }
             });

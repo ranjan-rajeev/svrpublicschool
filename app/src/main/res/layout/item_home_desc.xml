@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlParent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="8dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/TextViewStyle.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="Hostel Rules &amp; Regulation"
+        android:textAllCaps="true"
+        android:textColor="@color/uvv_black"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/view"
+        android:layout_alignRight="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/tvTitle"
+        android:layerType="software"
+        android:src="@drawable/dashed_line" />
+
+    <TextView
+        android:layout_below="@+id/view"
+        android:id="@+id/tvDesc"
+        style="@style/TextViewStyle.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="description"
+        android:visibility="visible" />
+
+</RelativeLayout>
