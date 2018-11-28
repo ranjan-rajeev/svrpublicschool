@@ -26,7 +26,7 @@ public class FacilityDetailsEntity {
         this.title = title;
         this.desc = desc;
         this.DescVisible = false;
-        this.url = "http://www.svrpublicschool.com/images/building.jpg";
+        this.url = "https://c1.staticflickr.com/5/4851/45746110222_f877bdfa5e_o.jpg";
     }
 
     public void setTitle(String title) {

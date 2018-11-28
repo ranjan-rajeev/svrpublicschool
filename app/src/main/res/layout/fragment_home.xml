@@ -166,7 +166,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@id/ivSchool"
-                android:text="S.V.R is an English Medium School for boys and girls founded on 2010 in the B.P.C.L. Road ,B.Pakri.Patna-2." />
+                android:text="S.V.R is an English Medium School for boys and girls founded on 2000 in the B.P.C.L. Road ,B.Pakri.Patna-2." />
         </RelativeLayout>
 
         <TextView

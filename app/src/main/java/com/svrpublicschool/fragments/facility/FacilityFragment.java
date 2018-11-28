@@ -54,13 +54,13 @@ public class FacilityFragment extends BaseFragment {
         String baseUrl = "http://www.svrpublicschool.com/";
         List<FacilityDetailsEntity> list = new ArrayList<>();
 
-        list.add(new FacilityDetailsEntity("Hostel Rules & Regulation", ""));
-        list.add(new FacilityDetailsEntity("Hostel Facility", ""));
-        list.add(new FacilityDetailsEntity("Medical Facility", ""));
-        list.add(new FacilityDetailsEntity("Well Maintained School", ""));
-        list.add(new FacilityDetailsEntity("Recreation", ""));
-        list.add(new FacilityDetailsEntity("Sports", ""));
-        list.add(new FacilityDetailsEntity("Clothing Items for Boarding", ""));
+        list.add(new FacilityDetailsEntity("Sports Facility", getResources().getString(R.string.sports)));
+        list.add(new FacilityDetailsEntity("Transport Facility", getResources().getString(R.string.transport_facility)));
+        list.add(new FacilityDetailsEntity("Library", getResources().getString(R.string.library)));
+        list.add(new FacilityDetailsEntity("Computer Labs", getResources().getString(R.string.computer_lab)));
+        list.add(new FacilityDetailsEntity("Smart Classes", getResources().getString(R.string.smart_classes)));
+        //list.add(new FacilityDetailsEntity("Sports", ""));
+        //list.add(new FacilityDetailsEntity("Clothing Items for Boarding", ""));
 
         return list;
     }

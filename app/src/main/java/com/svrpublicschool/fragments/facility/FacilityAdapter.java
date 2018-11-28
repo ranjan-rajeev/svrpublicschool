@@ -42,7 +42,7 @@ public class FacilityAdapter extends RecyclerView.Adapter<FacilityAdapter.Naviga
             final NavigationItem item = (NavigationItem) holder;
             final FacilityDetailsEntity entity = mAppList.get(position);
 
-            item.tvDesc.setText(R.string.hostel_rules);
+            item.tvDesc.setText(entity.getDesc());
             item.tvHeading.setText(entity.getTitle());
             item.tvTitle.setText(entity.getTitle());
             Glide.with(mContex).load(entity.getUrl()).into(item.ivIcon);
