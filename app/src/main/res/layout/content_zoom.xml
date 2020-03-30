@@ -9,10 +9,15 @@
     tools:context=".fragments.gallery.ZoomActivity"
     tools:showIn="@layout/activity_zoom">
 
-    <com.svrpublicschool.customview.TouchImageView
+<!--    <com.svrpublicschool.customview.TouchImageView-->
+<!--        android:id="@+id/ivZoom"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="500dp" />-->
+
+    <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/ivZoom"
-        android:layout_width="500dp"
-        android:layout_height="500dp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <ImageView
         android:layout_width="100dp"

@@ -1,9 +1,8 @@
 package com.svrpublicschool.fragments.faculty;
 
 import android.graphics.Bitmap;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.support.v7.widget.RecyclerView;
+
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
@@ -49,7 +52,7 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.Navigati
 
             if (position < mAppList.size()) {
 
-                Glide.with(mContex).load(entity.getProfilePhoto()).asBitmap().centerCrop().into(new BitmapImageViewTarget(item.ivIcon) {
+                Glide.with(mContex).asBitmap().load(entity.getProfilePhoto()).centerCrop().into(new BitmapImageViewTarget(item.ivIcon) {
                     @Override
                     protected void setResource(Bitmap resource) {
                         RoundedBitmapDrawable circularBitmapDrawable =

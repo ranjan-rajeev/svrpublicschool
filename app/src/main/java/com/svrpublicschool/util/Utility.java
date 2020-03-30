@@ -1,4 +1,4 @@
-package com.svrpublicschool;
+package com.svrpublicschool.util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -279,5 +279,16 @@ public class Utility {
             // this should work whether there was a resource id or not
             return typedValue.data;
         }
+    }
+
+    public static PackageInfo getPackageInfo(Context context) {
+        PackageManager manager = context.getPackageManager();
+        PackageInfo info = null;
+        try {
+            info = manager.getPackageInfo(context.getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return info;
     }
 }
