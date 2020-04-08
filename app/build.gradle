@@ -12,11 +12,23 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
-        release {
-            shrinkResources false
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        debug {
+            buildConfigField("Integer", "SPLASH_WAIT_TIME_IN_SECONDS", "${DEBUG_SPLASH_WAIT_TIME_IN_SECONDS}")
+            buildConfigField("Boolean", "IS_IN_DEBUG_MODE", "${DEBUG_IS_IN_DEBUG_MODE}")
+            buildConfigField("String", "HOST", "\"${DEBUG_HOST}\"")
         }
+        release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("Integer", "SPLASH_WAIT_TIME_IN_SECONDS", "${RELEASE_SPLASH_WAIT_TIME_IN_SECONDS}")
+            buildConfigField("Boolean", "IS_IN_DEBUG_MODE", "${RELEASE_IS_IN_DEBUG_MODE}")
+            buildConfigField("String", "HOST", "\"${RELEASE_HOST}\"")
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
 }
 
@@ -30,6 +42,23 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+
+    //    Retrofit for network loading
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp3Version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3Version"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation("com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofitVersion") {
+        exclude group: 'io.reactivex', module: 'rxjava'
+    }
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }

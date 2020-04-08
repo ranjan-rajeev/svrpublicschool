@@ -2,27 +2,36 @@ package com.svrpublicschool.home;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
+
 import com.google.android.material.navigation.NavigationView;
+
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
 import com.svrpublicschool.BaseActivity;
 import com.svrpublicschool.R;
+import com.svrpublicschool.Util.Constants;
+import com.svrpublicschool.Util.Logger;
 import com.svrpublicschool.database.DatabaseController;
 import com.svrpublicschool.fragments.aboutus.AboutUsFragment;
 import com.svrpublicschool.fragments.contact.ContactFragment;
@@ -30,6 +39,16 @@ import com.svrpublicschool.fragments.facility.FacilityFragment;
 import com.svrpublicschool.fragments.faculty.FacultyFragment;
 import com.svrpublicschool.fragments.gallery.GalleryFragment;
 import com.svrpublicschool.fragments.home.HomeFragment;
+import com.svrpublicschool.models.KeyValueModel;
+import com.svrpublicschool.services.HttpService;
+
+import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,6 +87,35 @@ public class MainActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         loadHomeFragment();
+        //updateUser();
+    }
+
+    private void updateUser() {
+
+        Observable<KeyValueModel> userModelObservable = HttpService.getInstance().getStringList(Constants.KEY_VALUE_STRING_URL);
+        userModelObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<KeyValueModel>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(KeyValueModel keyValueModel) {
+                        Logger.d("TAGEER", keyValueModel.getKeyValue().get(0).getKey());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     private void loadHomeFragment() {
@@ -199,9 +247,9 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_contact) {
             fragment = new ContactFragment();
 
-        }else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share) {
 
-        }else if (id == R.id.nav_aboutus) {
+        } else if (id == R.id.nav_aboutus) {
             fragment = new AboutUsFragment();
         }
 

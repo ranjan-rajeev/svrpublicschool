@@ -1,8 +1,10 @@
 package com.svrpublicschool.fragments.home;
 
 import android.os.Bundle;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +13,27 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.svrpublicschool.BaseFragment;
+import com.svrpublicschool.PrefManager.SharedPrefManager;
 import com.svrpublicschool.R;
+import com.svrpublicschool.SVRApplication;
+import com.svrpublicschool.Util.Constants;
+import com.svrpublicschool.Util.Logger;
+import com.svrpublicschool.Util.Utility;
+import com.svrpublicschool.models.BannerModel;
 import com.svrpublicschool.models.HomeDescEntity;
+import com.svrpublicschool.models.KeyValueModel;
+import com.svrpublicschool.services.HttpService;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class HomeFragment extends BaseFragment {
     View view;
@@ -38,16 +54,74 @@ public class HomeFragment extends BaseFragment {
 
         view = inflater.inflate(R.layout.fragment_home, container, false);
         initialise(view);
-
         setCorousalView();
 
         bindRecyclerView();
         setListener();
-
+        updateBanner();
+        updateText();
         //galleryAdapter = new GalleryAdapter(this, getImageList());
         //rvGallery.setAdapter(galleryAdapter);
         //new MasterController(getActivity()).getConstants(this);
         return view;
+    }
+
+    private void updateBanner() {
+        Observable<BannerModel> userModelObservable = HttpService.getInstance().getBannerList(Constants.BANNER_URL);
+        userModelObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BannerModel>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(BannerModel bannerModel) {
+                        Logger.d("TAGEER", bannerModel.getBanner().get(0).getUrl());
+                        sampleImages = Utility.getBannerList();
+                        setCorousalView();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+    }
+
+    private void updateText() {
+
+        Observable<KeyValueModel> userModelObservable = HttpService.getInstance().getStringList(Constants.KEY_VALUE_STRING_URL);
+        userModelObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<KeyValueModel>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(KeyValueModel keyValueModel) {
+                        Logger.d("TAGEER", keyValueModel.getKeyValue().get(0).getKey());
+                        tvAdmisson.setText(Utility.getStringValue("admission"));
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     private void bindRecyclerView() {
@@ -124,6 +198,5 @@ public class HomeFragment extends BaseFragment {
 
         rvRule = view.findViewById(R.id.rvRule);
         rvRule.setLayoutManager(new LinearLayoutManager(getActivity()));
-
     }
 }

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.svrpublicschool.R;
-import com.svrpublicschool.Utility;
+import com.svrpublicschool.Util.Utility;
 import com.svrpublicschool.models.FacilityDetailsEntity;
 
 

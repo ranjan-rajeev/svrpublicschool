@@ -1,4 +1,4 @@
-package com.svrpublicschool;
+package com.svrpublicschool.Util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,11 +16,18 @@ import android.text.format.Formatter;
 import android.util.Log;
 import android.util.TypedValue;
 
+import com.google.gson.Gson;
+import com.svrpublicschool.PrefManager.SharedPrefManager;
+import com.svrpublicschool.SVRApplication;
+import com.svrpublicschool.models.BannerModel;
+import com.svrpublicschool.models.KeyValueModel;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Enumeration;
@@ -279,5 +286,73 @@ public class Utility {
             // this should work whether there was a resource id or not
             return typedValue.data;
         }
+    }
+
+    public static PackageInfo getPackageInfo(Context context) {
+        PackageManager manager = context.getPackageManager();
+        PackageInfo info = null;
+        try {
+            info = manager.getPackageInfo(context.getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return info;
+    }
+
+    public static SharedPrefManager sharedPrefManager = SharedPrefManager.getInstance(SVRApplication.getContext());
+
+    public static String getStringValue(String keyname) {
+        String result = "";
+        String allString = sharedPrefManager.getStringValueForKey(Constants.KEY_VALUE_STRING, "");
+        Gson gson = new Gson();
+        KeyValueModel keyValueModel = gson.fromJson(allString, KeyValueModel.class);
+        if (keyValueModel != null) {
+            for (KeyValueModel.KeyValueEntity keyValueEntity : keyValueModel.getKeyValue()) {
+                if (keyname.equals(keyValueEntity.getKey())) {
+                    return keyValueEntity.getValue();
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public static String[] getBannerList() {
+
+        ArrayList<String> stringArrayList = new ArrayList<String>();
+        String allBanner = sharedPrefManager.getStringValueForKey(Constants.BANNER, "");
+        Gson gson = new Gson();
+        BannerModel bannerModel = gson.fromJson(allBanner, BannerModel.class);
+        if (bannerModel != null) {
+            for (int i = 0; i < bannerModel.getBanner().size(); i++) {
+                stringArrayList.add(bannerModel.getBanner().get(i).getUrl());
+            }
+        }
+
+        if (stringArrayList.size() < 1) {
+            stringArrayList.add("https://c1.staticflickr.com/5/4851/45746110222_f877bdfa5e_o.jpg");
+            stringArrayList.add("https://c1.staticflickr.com/5/4816/45746112072_23c3e157a4_o.jpg");
+            stringArrayList.add("https://c1.staticflickr.com/5/4806/45746111412_486e1a26b5_o.jpg");
+            stringArrayList.add("https://c1.staticflickr.com/5/4889/45746110872_5c96e1df01_o.jpg");
+        }
+        return GetStringArray(stringArrayList);
+    }
+
+    // Function to convert ArrayList<String> to String[]
+    public static String[] GetStringArray(ArrayList<String> arr) {
+
+        // declaration and initialise String Array
+        String str[] = new String[arr.size()];
+
+        // Convert ArrayList to object array
+        Object[] objArr = arr.toArray();
+
+        // Iterating and converting to String
+        int i = 0;
+        for (Object obj : objArr) {
+            str[i++] = (String) obj;
+        }
+
+        return str;
     }
 }

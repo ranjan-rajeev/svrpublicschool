@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.svrpublicschool.R;
-import com.svrpublicschool.Utility;
+import com.svrpublicschool.Util.Utility;
 
 import java.util.List;
 
