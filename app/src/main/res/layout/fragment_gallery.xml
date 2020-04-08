@@ -21,7 +21,7 @@
         android:singleLine="true"
         android:text="ADMISSION IS GOING ON 2018-19!!!                              ADMISSION IS GOING ON 2018-19!!! "
         android:textColor="@color/white" />
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvGallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

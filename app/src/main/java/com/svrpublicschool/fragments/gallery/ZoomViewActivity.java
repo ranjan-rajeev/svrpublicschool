@@ -1,29 +1,13 @@
 package com.svrpublicschool.fragments.gallery;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.svrpublicschool.BaseActivity;
 import com.svrpublicschool.R;
-import com.svrpublicschool.customview.TouchImageView;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class ZoomViewActivity extends BaseActivity {
 
