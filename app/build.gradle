@@ -24,8 +24,8 @@ android {
     }
     buildTypes {
         debug {
-            shrinkResources true
-            minifyEnabled true
+            shrinkResources false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("Integer", "SPLASH_WAIT_TIME_IN_SECONDS", "${DEBUG_SPLASH_WAIT_TIME_IN_SECONDS}")
             buildConfigField("Boolean", "IS_IN_DEBUG_MODE", "${DEBUG_IS_IN_DEBUG_MODE}")
@@ -40,9 +40,16 @@ android {
             buildConfigField("String", "HOST", "\"${RELEASE_HOST}\"")
         }
     }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+//        exclude 'META-INF/DEPENDENCIES'
+    }
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
+    }
+    lintOptions {
+        disable 'RestrictedApi'
     }
 }
 

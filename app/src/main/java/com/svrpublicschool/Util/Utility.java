@@ -20,9 +20,18 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.testing.FakeAppUpdateManager;
+import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.svrpublicschool.PrefManager.SharedPrefManager;
@@ -49,6 +58,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.Executor;
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Context.WIFI_SERVICE;
@@ -510,5 +520,12 @@ public class Utility {
         String androidId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
         UUID deviceUuid = new UUID((long) androidId.hashCode(), (long) androidId.hashCode());
         return deviceUuid.toString();
+    }
+
+    public static FakeAppUpdateManager getFakeAppUpdateManager(Context context) {
+        FakeAppUpdateManager fakeAppUpdateManager = new FakeAppUpdateManager(context);
+        fakeAppUpdateManager.getAppUpdateInfo().getResult().isUpdateTypeAllowed(AppUpdateType.IMMEDIATE);
+        fakeAppUpdateManager.setUpdateAvailable(10);
+        return fakeAppUpdateManager;
     }
 }

@@ -3,9 +3,10 @@ package com.svrpublicschool.models;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
 import com.google.gson.annotations.SerializedName;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.io.Serializable;
 

@@ -38,6 +38,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.appupdate.testing.FakeAppUpdateManager;
 import com.google.android.play.core.install.InstallState;
 import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
@@ -51,6 +52,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.svrpublicschool.BaseActivity;
+import com.svrpublicschool.BuildConfig;
 import com.svrpublicschool.PrefManager.SharedPrefManager;
 import com.svrpublicschool.R;
 import com.svrpublicschool.Util.Constants;
@@ -117,6 +119,10 @@ public class MainActivity extends BaseActivity
     private static final int REQUEST_UPDATE = 11;
     private AppUpdateManager mAppUpdateManager;
     private static boolean updatePopUpShown = false;
+
+    public void setmAppUpdateManager(AppUpdateManager mAppUpdateManager) {
+        this.mAppUpdateManager = mAppUpdateManager;
+    }
 
     @Override
     protected void onStart() {

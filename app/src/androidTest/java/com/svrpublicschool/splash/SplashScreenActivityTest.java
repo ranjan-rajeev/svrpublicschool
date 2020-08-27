@@ -3,6 +3,7 @@ package com.svrpublicschool.splash;
 import android.content.Intent;
 import android.net.Uri;
 
+import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
@@ -14,6 +15,7 @@ import com.svrpublicschool.SVRApplication;
 import com.svrpublicschool.SplashScreenActivity;
 import com.svrpublicschool.mockserver.MockServerRule;
 import com.svrpublicschool.mockserver.RestServiceTestHelper;
+import com.svrpublicschool.ui.main.MainActivity;
 
 import org.junit.After;
 import org.junit.Before;
@@ -31,6 +33,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class SplashScreenActivityTest {
@@ -38,7 +41,7 @@ public class SplashScreenActivityTest {
     FakeAppUpdateManager fakeAppUpdateManager;
 
     @Rule
-    public ActivityTestRule<SplashScreenActivity> activityTestRule = new ActivityTestRule<>(SplashScreenActivity.class, true, false);
+    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class, true, false);
 
     @Rule
     public final MockServerRule mMockServerRule = new MockServerRule();
@@ -48,6 +51,29 @@ public class SplashScreenActivityTest {
         MockitoAnnotations.initMocks(this);
         fakeAppUpdateManager = new FakeAppUpdateManager(SVRApplication.getContext());
     }
+
+    @Test
+    public void testImmediateUpdate_Completes() {
+        // Setup immediate update.E
+        fakeAppUpdateManager.getAppUpdateInfo().getResult().isUpdateTypeAllowed(AppUpdateType.IMMEDIATE);
+        fakeAppUpdateManager.setUpdateAvailable(7);
+
+        ActivityScenario.launch(MainActivity.class);
+
+        // Validate that immediate update is prompted to the user.
+        assertTrue(fakeAppUpdateManager.isImmediateFlowVisible());
+
+        // Simulate user's and download behavior.
+        fakeAppUpdateManager.userAcceptsUpdate();
+
+        fakeAppUpdateManager.downloadStarts();
+
+        fakeAppUpdateManager.downloadCompletes();
+
+        // Validate that update is completed and app is restarted.
+        assertTrue(fakeAppUpdateManager.isInstallSplashScreenVisible());
+    }
+
 
 /*    @Test
     public void testFlexibleUpdate_Completes() {

@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
 
+
 @Entity
 public class FacultyDetailsEntity {
     @PrimaryKey
