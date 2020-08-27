@@ -3,8 +3,11 @@ package com.svrpublicschool;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.svrpublicschool.models.UserEntity;
 
 /**
  * Created by Rajeev on 08/11/18.
@@ -12,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class BaseActivity extends AppCompatActivity {
 
     ProgressDialog dialog;
+    public static UserEntity userEntity;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,5 +75,13 @@ public class BaseActivity extends AppCompatActivity {
             if (!dialog.isShowing())
                 dialog = ProgressDialog.show(this, "", msg, true);
         }
+    }
+
+    public UserEntity getUser() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 }

@@ -8,26 +8,27 @@
 
     <ImageView
         android:id="@+id/ivIcon"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:layout_marginRight="5dp"
+        android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/ic_home_black_24dp" />
+        android:transitionName="imageMain"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
-        android:id="@+id/tvTitle"
-        style="@style/TextViewStyle.Large"
+        android:id="@+id/ivPreview"
+        style="@style/TextViewStyle.Medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="fsd"
         android:textAllCaps="true"
-        android:textColor="@color/uvv_black"
-        />
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/tvDesc"
-        style="@style/TextViewStyle.Medium"
+        style="@style/TextViewStyle.Small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

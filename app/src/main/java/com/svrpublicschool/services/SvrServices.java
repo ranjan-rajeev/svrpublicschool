@@ -1,9 +1,13 @@
 package com.svrpublicschool.services;
 
 
-import com.svrpublicschool.models.BannerModel;
+import com.svrpublicschool.models.BooksResponse;
+import com.svrpublicschool.models.DashBoardResponse;
+import com.svrpublicschool.models.DatabaseVesionModel;
+import com.svrpublicschool.models.FacultyResponse;
 import com.svrpublicschool.models.KeyValueModel;
 import com.svrpublicschool.models.TestModel;
+import com.svrpublicschool.models.YoutubeMetaDataEntity;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -18,6 +22,18 @@ public interface SvrServices {
     Observable<KeyValueModel> getKeyValueStrings(@Url String url);
 
     @GET
-    Observable<BannerModel> getBannerList(@Url String url);
+    Observable<DatabaseVesionModel> getDbVersion(@Url String url);
+
+    @GET
+    Observable<DashBoardResponse> getDashBoard(@Url String url);
+
+    @GET
+    Observable<BooksResponse> getBooks(@Url String url);
+
+    @GET
+    Observable<FacultyResponse> getFacultyList(@Url String url);
+
+    @GET
+    Observable<YoutubeMetaDataEntity> getYoutubeMetaData(@Url String url);
 
 }

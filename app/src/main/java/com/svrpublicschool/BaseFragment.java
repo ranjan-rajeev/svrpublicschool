@@ -1,10 +1,20 @@
 package com.svrpublicschool;
 
 import android.app.ProgressDialog;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.svrpublicschool.Util.Logger;
 
 public class BaseFragment extends Fragment {
     ProgressDialog dialog;
+    public static String marquee = "";
 
     public BaseFragment() {
 
@@ -40,6 +50,5 @@ public class BaseFragment extends Fragment {
         }
 
     }
-
 
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlParent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_16"
+    android:layout_marginTop="@dimen/margin_16"
+    android:layout_marginRight="@dimen/margin_80">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPreview"
+        style="@style/TextViewStyle.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@drawable/ic_sent_bg"
+        android:backgroundTint="@color/lightGrey"
+        android:scaleType="fitXY"
+        android:textColor="@color/black"
+        app:srcCompat="@drawable/avtar" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        style="@style/TextViewStyle.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/ivPreview"
+        android:layout_alignBottom="@+id/ivPreview"
+        android:layout_marginRight="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:text="4:10 PM"
+        android:textColor="@color/whatsapp_text_color" />
+
+</RelativeLayout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?><!-- START xml_defaults -->
+<defaultsMap>
+
+    <entry>
+        <key>faculty_list</key>
+        <value>[{"id":1,"name":"Rajesh
+            Roushan","desg":"Director","profilePhoto":"https://live.staticflickr.com/65535/49929969586_80b97de61d_b.jpg","fbUrl":""},{"id":2,"name":"Anupma
+            Sinha","desg":"Principle","profilePhoto":"https://live.staticflickr.com/65535/49929454308_614cebc7bf_m.jpg","fbUrl":""},{"id":3,"name":"Usha
+            Devi","desg":"Supervisor","profilePhoto":"https://live.staticflickr.com/65535/49929453853_71b2843be0_m.jpg","fbUrl":""},{"id":4,"name":"Ajay
+            Devgan","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454533_be0856c722_m.jpg","fbUrl":""},{"id":5,"name":"Abhay
+            Prasad","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49930273507_fc9221839f_m.jpg","fbUrl":""},{"id":6,"name":"Madan
+            Prasad","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929969231_05cf1d260d_m.jpg","fbUrl":""},{"id":7,"name":"Monali
+            Majunder","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454163_27e0a2fe76_m.jpg","fbUrl":""},{"id":8,"name":"Rakesh
+            Ranjan","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929969101_7cf901131c_m.jpg","fbUrl":""},{"id":9,"name":"Poonam
+            Kumari","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454148_04f7a3acb6_m.jpg","fbUrl":""},{"id":10,"name":"Shashi
+            Ranjan","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454053_e0f1219ea1_m.jpg","fbUrl":""},{"id":11,"name":"Pratima
+            Kumari","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929969156_cc58922190_m.jpg","fbUrl":""},{"id":12,"name":"Smita
+            Yadav","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454438_2eeefe77c2_m.jpg","fbUrl":""},{"id":13,"name":"Manoj
+            Sharma","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454498_2755a50df0_m.jpg","fbUrl":""},{"id":14,"name":"Sanju
+            Kumari","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929453998_513c2868f4_m.jpg","fbUrl":""},{"id":15,"name":"Sudhir
+            Kumar
+            Singh","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49930273082_4cf7ab0b5b_m.jpg","fbUrl":""},{"id":16,"name":"Subhrato
+            Kumar
+            Ghosh","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49930273552_efb254a870_m.jpg","fbUrl":""},{"id":17,"name":"Geeta
+            Singh","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929969286_9af084c9a8_m.jpg","fbUrl":""},{"id":18,"name":"Subir
+            Chatterjee","desg":"Accountant","profilePhoto":"https://live.staticflickr.com/65535/49929453933_7e0a4c0ac1_m.jpg","fbUrl":""}]
+        </value>
+    </entry>
+
+    <entry>
+        <key>gallery_list</key>
+        <value>
+            [{"id":1,"url":"https://c1.staticflickr.com/5/4879/31924625408_4245740bb5_o.jpg"},{"id":2,"url":"https://c1.staticflickr.com/5/4851/45746110222_f877bdfa5e_o.jpg"},{"id":3,"url":"https://c1.staticflickr.com/5/4820/31924625998_38e30ce73f_o.jpg"},{"id":4,"url":"https://c1.staticflickr.com/5/4883/45071375624_e6e2354906_o.jpg"},{"id":5,"url":"https://c1.staticflickr.com/5/4908/45746110682_c1408ef20d_o.jpg"},{"id":6,"url":"https://c1.staticflickr.com/5/4900/31924626508_88af66ea85_o.jpg"},{"id":7,"url":"https://c1.staticflickr.com/5/4860/45071375934_11a47fa9bc_o.jpg"},{"id":8,"url":"https://c1.staticflickr.com/5/4889/45746110872_5c96e1df01_o.jpg"},{"id":9,"url":"https://c1.staticflickr.com/5/4863/31924626698_60a5d925e0_o.jpg"},{"id":10,"url":"https://c1.staticflickr.com/5/4843/45746109982_62ee0c25be_o.jpg"},{"id":11,"url":"https://c1.staticflickr.com/5/4879/31924625408_4245740bb5_o.jpg"},{"id":12,"url":"https://c1.staticflickr.com/5/4879/31924625408_4245740bb5_o.jpg"},{"id":13,"url":"https://c1.staticflickr.com/5/4879/31924625408_4245740bb5_o.jpg"},{"id":14,"url":"https://c1.staticflickr.com/5/4879/31924625408_4245740bb5_o.jpg"},{"id":15,"url":"https://c1.staticflickr.com/5/4879/31924625408_4245740bb5_o.jpg"},{"id":16,"url":"https://c1.staticflickr.com/5/4879/31924625408_4245740bb5_o.jpg"},{"id":17,"url":"https://c1.staticflickr.com/5/4879/31924625408_4245740bb5_o.jpg"},{"id":18,"url":"https://c1.staticflickr.com/5/4879/31924625408_4245740bb5_o.jpg"},{"id":19,"url":"https://c1.staticflickr.com/5/4879/31924625408_4245740bb5_o.jpg"},{"id":20,"url":"https://c1.staticflickr.com/5/4879/31924625408_4245740bb5_o.jpg"}]
+        </value>
+    </entry>
+
+    <entry>
+        <key>book_list</key>
+        <value>
+            [{"id":1,"class":10,"subject":"MATH","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279220855423795213034/10oswtbqc7mji-jcfjpbxzneghllo1qkf.pdf"},{"id":2,"class":10,"subject":"SCIENCE","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279220995335782413040/1cmbrk7-gwoufcea0vsz39cwhoc2k5ck7.pdf"},{"id":3,"class":10,"subject":"ECONOMICS","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279221202061721613048/1tcff4but8uev8bcwead5bbv6g1eh7xi8.pdf?40"},{"id":4,"class":10,"subject":"Contemporary
+            India
+            II","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279224225125171213109/1kr2nsh1dljtvvin_kniw-yii-vuydvty.pdf"},{"id":5,"class":10,"subject":"Democratic
+            Politics
+            II","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279221178623590412862/1c7ysktur3gv8lp_gem1patfl0bqmfuzu.pdf"},{"id":6,"class":10,"subject":"India
+            And The Contemporary World
+            II","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279221109228339212857/1ydxawmlbje5kwc4eaph5v12ppadoqes_.pdf"},{"id":7,"class":10,"subject":"संचयन
+            २","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279220783066316812842/1er-voysbogvf0p0rxxcx20w2x0wnqkfv.pdf"},{"id":8,"class":10,"subject":"स्पर्श
+            २","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279220795211776012844/1iloz53vdqwdxxzs-lwe0mcgkjltxyoye.pdf"},{"id":9,"class":9,"subject":"MATH","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279220846267596812846/1dkwl6tisjrlq4qolhhlmuzfx8rrvge4d.pdf"},{"id":10,"class":9,"subject":"SCIENCE","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279220949588377612852/1urlfityollali0drji_cpyciloxwb7o1.pdf"},{"id":11,"class":9,"subject":"ECONOMICS","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279221191393280012863/1fz00vldp83c8vhxoanffwcrbwm6-r_jc.pdf"},{"id":12,"class":9,"subject":"Contemporary
+            India
+            I","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279224215468441612914/1v12upybhpeqq7glvojey87f2nxvj-0vw.pdf"},{"id":13,"class":9,"subject":"Democratic
+            Politics
+            I","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279221165814579212861/1w1n2eoqhuaoolnj8-gsibosw-n9m3le4.pdf"},{"id":14,"class":9,"subject":"India
+            And The Contemporary World
+            I","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279221093398937613046/1-gyrgtg0bdj7mdigewqphc-ifhmkynt_.pdf"},{"id":15,"class":9,"subject":"संचयन
+            १","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279220738691891213029/1px3qeqh8cjy2fdu1hejqpb2lkzvocdrj.pdf"},{"id":16,"class":9,"subject":"स्पर्श
+            १","chapter":"ALL","isCategory":true,"hasSubCategory":false,"url":"https://ntpproductionall.blob.core.windows.net/ntp-content-production/content/assets/do_31279220749246464012840/1kkdtfoz42dpcakh2wgmgt7fzysqz7yel.pdf"}]
+        </value>
+    </entry>
+
+    <entry>
+        <key>dashboard_list</key>
+        <value>[{"id":10,"type":"tiles","title":"STUDY
+            MATERIAL","url":"","redurl":"StudyFragment","userType":"STUDENT","isActive":true},{"id":20,"type":"tiles","title":"BOOKS","url":"https://www.asme.org/getmedia/c2c8ea5a-b690-4ba7-92bb-34bd1432862b/book_guide_hero_books.png?width=300
+            &amp;height=315&amp;
+            ext=.png","redurl":"BooksFragment","userType":"STUDENT","isActive":true},{"id":30,"type":"tiles","title":"HOME
+            WORK","url":"","redurl":"HomeWorkFragment","userType":"STUDENT","isActive":true},{"id":40,"type":"tiles","title":"NOTICE","url":"","redurl":"NoticeFragment","userType":"STUDENT","isActive":true},{"id":50,"type":"tiles","title":"GALLERY","url":"","redurl":"GalleryFragment","userType":"STUDENT","isActive":true},{"id":60,"type":"tiles","title":"ASK
+            QUESTION?","url":"https://www.policyboss.com/","redurl":"GroupChat","userType":"STUDENT","isActive":true}]
+        </value>
+    </entry>
+
+    <entry>
+        <key>banner_list</key>
+        <value>
+            [{"id":1,"url":"https://c1.staticflickr.com/5/4851/45746110222_f877bdfa5e_o.jpg"},{"id":1,"url":"https://c1.staticflickr.com/5/4816/45746112072_23c3e157a4_o.jpg"},{"id":1,"url":"https://c1.staticflickr.com/5/4806/45746111412_486e1a26b5_o.jpg"},{"id":1,"url":"https://c1.staticflickr.com/5/4889/45746110872_5c96e1df01_o.jpg"}]
+        </value>
+    </entry>
+
+    <entry>
+        <key>faculty_list</key>
+        <value>[{"id":1,"name":"Rajesh
+            Roushan","desg":"Director","profilePhoto":"https://live.staticflickr.com/65535/49929969586_80b97de61d_b.jpg","fbUrl":""},{"id":2,"name":"Anupma
+            Sinha","desg":"Principle","profilePhoto":"https://live.staticflickr.com/65535/49929454308_614cebc7bf_m.jpg","fbUrl":""},{"id":3,"name":"Usha
+            Devi","desg":"Supervisor","profilePhoto":"https://live.staticflickr.com/65535/49929453853_71b2843be0_m.jpg","fbUrl":""},{"id":4,"name":"Ajay
+            Devgan","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454533_be0856c722_m.jpg","fbUrl":""},{"id":5,"name":"Abhay
+            Prasad","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49930273507_fc9221839f_m.jpg","fbUrl":""},{"id":6,"name":"Madan
+            Prasad","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929969231_05cf1d260d_m.jpg","fbUrl":""},{"id":7,"name":"Monali
+            Majunder","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454163_27e0a2fe76_m.jpg","fbUrl":""},{"id":8,"name":"Rakesh
+            Ranjan","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929969101_7cf901131c_m.jpg","fbUrl":""},{"id":9,"name":"Poonam
+            Kumari","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454148_04f7a3acb6_m.jpg","fbUrl":""},{"id":10,"name":"Shashi
+            Ranjan","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454053_e0f1219ea1_m.jpg","fbUrl":""},{"id":11,"name":"Pratima
+            Kumari","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929969156_cc58922190_m.jpg","fbUrl":""},{"id":12,"name":"Smita
+            Yadav","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454438_2eeefe77c2_m.jpg","fbUrl":""},{"id":13,"name":"Manoj
+            Sharma","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929454498_2755a50df0_m.jpg","fbUrl":""},{"id":14,"name":"Sanju
+            Kumari","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929453998_513c2868f4_m.jpg","fbUrl":""},{"id":15,"name":"Sudhir
+            Kumar
+            Singh","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49930273082_4cf7ab0b5b_m.jpg","fbUrl":""},{"id":16,"name":"Subhrato
+            Kumar
+            Ghosh","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49930273552_efb254a870_m.jpg","fbUrl":""},{"id":17,"name":"Geeta
+            Singh","desg":"Teacher","profilePhoto":"https://live.staticflickr.com/65535/49929969286_9af084c9a8_m.jpg","fbUrl":""},{"id":18,"name":"Subir
+            Chatterjee","desg":"Accountant","profilePhoto":"https://live.staticflickr.com/65535/49929453933_7e0a4c0ac1_m.jpg","fbUrl":""}]
+        </value>
+    </entry>
+
+    <entry>
+        <key>scroll_msg</key>
+        <value>Dear Parents, this is to inform you that your ward has been promoted in next classes.
+            Study Materials has been provided on school website.
+        </value>
+    </entry>
+
+    <entry>
+        <key>upload_enabled</key>
+        <value>false</value>
+    </entry>
+    <entry>
+        <key>realtime_enabled</key>
+        <value>false</value>
+    </entry>
+    <entry>
+        <key>force_update</key>
+        <value>false</value>
+    </entry>
+
+
+
+
+</defaultsMap><!-- END xml_defaults -->

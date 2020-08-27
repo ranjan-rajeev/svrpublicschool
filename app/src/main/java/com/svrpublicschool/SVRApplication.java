@@ -5,6 +5,7 @@ import android.content.Context;
 
 public class SVRApplication extends Application {
     private static SVRApplication mInstance;
+    public static String marqueText = "";
 
     @Override
     public void onCreate() {

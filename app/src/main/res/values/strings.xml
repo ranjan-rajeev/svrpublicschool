@@ -38,4 +38,9 @@
     <string name="preferences">svrpublic</string>
 
     <string name="admission">ADMISSION IS GOING ON 2020-21!!!                              ADMISSION IS GOING ON 2020-21!!! </string>
+    <string name="copyright">©2020 | SVR Public School</string>
+    <string name="default_channel_id">"MARKETING"</string>
+    <string name="text_channel_promotional_name">Promotional</string>
+    <string name="text_channel_promotional_description">Get Sale, Promotion, Discount and Recommendation alerts</string>
+    <string name="marqueText">Dear Parents, this is to inform you that your ward has been promoted in next classes. Study Materials has been provided on school website.</string>
 </resources>

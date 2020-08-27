@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "509411372037",
+    "firebase_url": "https://svr-public-school-4064b.firebaseio.com",
+    "project_id": "svr-public-school-4064b",
+    "storage_bucket": "svr-public-school-4064b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509411372037:android:bf6ac8aa2a398cf850c06c",
+        "android_client_info": {
+          "package_name": "com.svrpublicschool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509411372037-jmkqcon68mlm6u7vpdphru3farfgmfle.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.svrpublicschool",
+            "certificate_hash": "45ec0c54df9718594591f99407b95cd66bf78603"
+          }
+        },
+        {
+          "client_id": "509411372037-4uj6jovvgq60ca1n26jna99bhnrjbfuc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM4gsH5Y6_Z5OXlmHdHaSV4KVSK-Rjx2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509411372037-4uj6jovvgq60ca1n26jna99bhnrjbfuc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

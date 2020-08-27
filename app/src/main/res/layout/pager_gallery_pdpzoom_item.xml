@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/margin_60"
+    android:layout_height="@dimen/margin_80"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/iv_product_detail_zoom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_gravity="left|center_vertical"
+        android:adjustViewBounds="true"
+        android:background="@color/white" />
+
+    <ImageView
+        android:id="@+id/iv_product_detail_zoom_thumbnail_play"
+        android:layout_width="@dimen/margin_15"
+        android:layout_height="@dimen/margin_15"
+        android:layout_alignTop="@+id/iv_product_detail_zoom"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:srcCompat="@android:drawable/ic_media_play" />
+
+    <ImageView
+        android:id="@+id/pdpzoom_border"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:src="@drawable/corner_shape"
+        android:visibility="visible" />
+
+</RelativeLayout>

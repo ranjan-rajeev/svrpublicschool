@@ -1,11 +1,19 @@
 package com.svrpublicschool.models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import org.jetbrains.annotations.NotNull;
+
+@Entity
 public class FacultyDetailsEntity {
-    int id;
-    String name;
-    String desg;
-    String profilePhoto;
-    String fbUrl;
+    @PrimaryKey
+    @NotNull
+    public int id;
+    public String name;
+    public String desg;
+    public String profilePhoto;
+    public String fbUrl;
 
     public FacultyDetailsEntity(int id, String name, String desg, String profilePhoto) {
         this.id = id;

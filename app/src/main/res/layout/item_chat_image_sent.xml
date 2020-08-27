@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlParent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="false"
+    android:layout_alignParentRight="true"
+    android:layout_gravity="right"
+    android:layout_marginLeft="@dimen/margin_80"
+    android:layout_marginTop="@dimen/margin_16"
+    android:layout_marginRight="@dimen/margin_16"
+    android:background="@drawable/received"
+    android:backgroundTint="@color/whatsapp_background"
+    android:gravity="right">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true">
+
+        <TextView
+            android:id="@+id/tvSender"
+            style="@style/TextViewStyle.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_5"
+            android:text="SVR PUBLIC SCHOOL"
+            android:textColor="@color/colorAccent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivPreview"
+            style="@style/TextViewStyle.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvSender"
+            android:adjustViewBounds="true"
+            android:maxHeight="300dp"
+            android:scaleType="centerCrop"
+            android:textColor="@color/black"
+            android:transitionName="imageMain"
+            app:srcCompat="@drawable/bg_blur" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivPreview"
+            android:layout_alignRight="@+id/ivPreview"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTime"
+                style="@style/TextViewStyle.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="4:10 PM"
+                android:textColor="@color/whatsapp_text_color" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivDoubleTick"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_toRightOf="@+id/tvTime"
+                android:padding="@dimen/margin_3"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_not_sent" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/image_bg">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:progressBarStyleHorizontal"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@color/white"
+                android:progress="50"
+                android:progressDrawable="@drawable/circle_progress"
+                android:rotation="270"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCancel"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_clear_white_24dp" />
+
+            <TextView
+                android:id="@+id/tvRetry"
+                style="@style/TextViewStyle.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/image_bg"
+                android:drawableLeft="@drawable/ic_upload"
+                android:drawablePadding="@dimen/margin_8"
+                android:paddingLeft="@dimen/margin_8"
+                android:paddingTop="@dimen/margin_8"
+                android:paddingRight="@dimen/margin_16"
+                android:paddingBottom="@dimen/margin_8"
+                android:text="RETRY"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

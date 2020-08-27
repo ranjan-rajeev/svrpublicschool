@@ -7,6 +7,11 @@ import com.svrpublicschool.BuildConfig;
 
 public final class Logger {
 
+    public static void d(String msg) {
+        if (BuildConfig.IS_IN_DEBUG_MODE && null != msg)
+            Log.d("SVRAPP", msg);
+    }
+
     public static void d(String tag, String msg) {
         if (BuildConfig.IS_IN_DEBUG_MODE && null != msg)
             Log.d(tag, msg);

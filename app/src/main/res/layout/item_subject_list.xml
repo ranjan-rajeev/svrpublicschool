@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="@dimen/card_view_radius_8"
+    app:cardElevation="@dimen/card_view_elevation">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/card_view_paddinng">
+
+        <TextView
+            android:id="@+id/tvClass"
+            style="@style/TextViewStyle.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha=".4"
+            android:gravity="center"
+            android:text="CLASS 10"
+            android:textColor="@color/lightBlue"
+            android:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.1"
+            android:visibility="visible"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/ivPreview"
+            style="@style/TextViewStyle.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="CLASS X"
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivDot"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right|end"
+            android:visibility="gone"
+            app:srcCompat="@drawable/circle_green" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,5 +1,7 @@
 package com.svrpublicschool.Util;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,36 +12,49 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.Settings;
 import android.text.format.Formatter;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
+
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.svrpublicschool.PrefManager.SharedPrefManager;
+import com.svrpublicschool.R;
 import com.svrpublicschool.SVRApplication;
-import com.svrpublicschool.models.BannerModel;
+import com.svrpublicschool.models.DatabaseVersion;
+import com.svrpublicschool.models.DatabaseVesionModel;
+import com.svrpublicschool.models.GroupDetailsEntity;
 import com.svrpublicschool.models.KeyValueModel;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+import java.util.UUID;
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Context.WIFI_SERVICE;
 
 public class Utility {
-
     public static final String SHARED_PREFERENCE = "shared_svr";
-
 
     public static SharedPreferences getSharedPreference(Context context) {
         return context.getSharedPreferences(SHARED_PREFERENCE, MODE_PRIVATE);
@@ -54,7 +69,6 @@ public class Utility {
         String currentDateandTime = sdf.format(new Date());
         return currentDateandTime;
     }
-
 
     public static File createDirIfNotExists() {
         boolean ret = true;
@@ -81,7 +95,6 @@ public class Utility {
         }
         return file;
     }
-
 
     public static String getLocalIpAddress(Context context) {
         String IPaddress;
@@ -317,42 +330,185 @@ public class Utility {
         return result;
     }
 
-    public static String[] getBannerList() {
-
-        ArrayList<String> stringArrayList = new ArrayList<String>();
-        String allBanner = sharedPrefManager.getStringValueForKey(Constants.BANNER, "");
+    public static int getServerVersionExcel(String keyname) {
+        String allString = sharedPrefManager.getStringValueForKey(Constants.SHD_PRF_VERSION_EXCEL, "");
         Gson gson = new Gson();
-        BannerModel bannerModel = gson.fromJson(allBanner, BannerModel.class);
-        if (bannerModel != null) {
-            for (int i = 0; i < bannerModel.getBanner().size(); i++) {
-                stringArrayList.add(bannerModel.getBanner().get(i).getUrl());
+        DatabaseVesionModel databaseVesionModel = gson.fromJson(allString, DatabaseVesionModel.class);
+        if (databaseVesionModel != null) {
+            for (DatabaseVersion databaseVersion : databaseVesionModel.getDbversion()) {
+                if (keyname.equals(databaseVersion.getName())) {
+                    return databaseVersion.getVersion();
+                }
             }
         }
-
-        if (stringArrayList.size() < 1) {
-            stringArrayList.add("https://c1.staticflickr.com/5/4851/45746110222_f877bdfa5e_o.jpg");
-            stringArrayList.add("https://c1.staticflickr.com/5/4816/45746112072_23c3e157a4_o.jpg");
-            stringArrayList.add("https://c1.staticflickr.com/5/4806/45746111412_486e1a26b5_o.jpg");
-            stringArrayList.add("https://c1.staticflickr.com/5/4889/45746110872_5c96e1df01_o.jpg");
-        }
-        return GetStringArray(stringArrayList);
+        return -1;
     }
 
-    // Function to convert ArrayList<String> to String[]
-    public static String[] GetStringArray(ArrayList<String> arr) {
-
-        // declaration and initialise String Array
-        String str[] = new String[arr.size()];
-
-        // Convert ArrayList to object array
-        Object[] objArr = arr.toArray();
-
-        // Iterating and converting to String
-        int i = 0;
-        for (Object obj : objArr) {
-            str[i++] = (String) obj;
+    public static boolean shoulFetchFromServer(Context context, String versionKey, String name) {
+        SharedPrefManager sharedPrefManager = SharedPrefManager.getInstance(context);
+        if (isNetworkConnected(context)) {
+            int localVersion = sharedPrefManager.getIntegerValueForKey(versionKey, -1);
+            if (localVersion == -1) {
+                return true;
+            }
+            int serverVersion = getServerVersionExcel(name);
+            if (localVersion < serverVersion) {
+                return true;
+            }
         }
+        return false;
+    }
 
-        return str;
+    public static int getServerVersion(Context context, String name) {
+        Gson gson = new Gson();
+        SharedPrefManager sharedPrefManager = SharedPrefManager.getInstance(context);
+        try {
+            String versions = sharedPrefManager.getStringValueForKey(Constants.SHD_PRF_VERSION_FIREBASE, "");
+            Type listType = new TypeToken<List<DatabaseVersion>>() {
+            }.getType();
+            List<DatabaseVersion> databaseVersions = gson.fromJson(versions, listType);
+            if (databaseVersions != null && databaseVersions.size() > 0) {
+                for (int i = 0; i < databaseVersions.size(); i++) {
+                    if (databaseVersions.get(i).getName().equalsIgnoreCase(name)) {
+                        return databaseVersions.get(i).getVersion();
+                    }
+                }
+            }
+        } catch (Exception e) {
+
+        }
+        return -1;
+    }
+
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static String readAssetsJsonFile(Context context, String file) {
+        String json;
+        try {
+            InputStream is = context.getAssets().open(file);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+    public static int getDisplayWidth(Activity activity) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.widthPixels;
+    }
+
+    public static int getDisplayHeight(Activity activity) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.heightPixels;
+    }
+
+    public static String getFormattedTime(long time) {
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a");
+            return simpleDateFormat.format(new Date(time));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static int getRandomColor(int number, Context context) {
+        if (number == -1) {
+            number = new Random().nextInt(10) + 1;
+        }
+        number = number % 7;
+
+        switch (number) {
+            case 0:
+                return ContextCompat.getColor(context, R.color.progress_blue);
+            case 1:
+                return ContextCompat.getColor(context, R.color.colorAccent);
+            case 2:
+                return ContextCompat.getColor(context, R.color.whatsapp_image_bg);
+            case 3:
+                return ContextCompat.getColor(context, R.color.green_descent);
+            case 4:
+                return ContextCompat.getColor(context, R.color.colorGrey88);
+            case 5:
+                return ContextCompat.getColor(context, R.color.lightBlue);
+            case 6:
+                return ContextCompat.getColor(context, R.color.red_text);
+            case 7:
+                return ContextCompat.getColor(context, R.color.uvv_green);
+
+            default:
+                return ContextCompat.getColor(context, R.color.whatsapp_image_bg);
+
+        }
+    }
+
+    public static final GroupDetailsEntity getGroupDetails() {
+        GroupDetailsEntity groupDetailsEntity = new GroupDetailsEntity();
+        groupDetailsEntity.setCreatedAt(Calendar.getInstance().getTimeInMillis());
+        groupDetailsEntity.setFid("-M8Lanj7FiV5iwmsaPql");
+        groupDetailsEntity.setGpName("Ask Question ?");
+        groupDetailsEntity.setGpIcon("");
+        return groupDetailsEntity;
+    }
+
+    public static String getFormattedDate(long timeInMilli, boolean withTime) {
+        String result = "";
+        try {
+            Calendar estimateDate = Calendar.getInstance();
+            estimateDate.setTimeInMillis(timeInMilli);
+            SimpleDateFormat desiredFormat;
+            desiredFormat = new SimpleDateFormat("d\'" + getFormattedEstimatedDeliveryDate(estimateDate.get(Calendar.DAY_OF_MONTH)) + "\' MMM, yyyy" + (withTime ? " h:mm a" : ""), Locale.ENGLISH);
+            result = desiredFormat.format(estimateDate.getTime());
+        } catch (Exception e) {
+
+        }
+        return result;
+    }
+
+    public static String getFormattedEstimatedDeliveryDate(int dayOfMonth) {
+        String result = "";
+        if (dayOfMonth >= 11 && dayOfMonth <= 13) {
+            result = "th";
+        } else {
+            switch (dayOfMonth % 10) {
+                case 1:
+                    result = "st";
+                    break;
+                case 2:
+                    result = "nd";
+                    break;
+                case 3:
+                    result = "rd";
+                    break;
+                default:
+                    result = "th";
+                    break;
+            }
+        }
+        return result;
+    }
+
+
+    public static boolean isListEmpty(List mDataList) {
+        return null == mDataList || mDataList.isEmpty();
+    }
+
+    @SuppressLint("HardwareIds")
+    public static String getUniqueDeviceId(Context context) {
+        String androidId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+        UUID deviceUuid = new UUID((long) androidId.hashCode(), (long) androidId.hashCode());
+        return deviceUuid.toString();
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.svrpublicschool.R;
+import com.svrpublicschool.Util.Logger;
 
 
 /**
@@ -105,6 +106,7 @@ public class SharedPrefManager {
     }
 
     public void putStringValueForKey(String key, String value) {
+        Logger.d("Storing KEY : " + key + " Value : " + value);
         if (mContext != null) {
             if (prefs == null) {
                 prefs = mContext.getSharedPreferences(mContext.getResources().getString(R.string.preferences),
@@ -143,6 +145,7 @@ public class SharedPrefManager {
     }
 
     public void putIntegerValueForKey(String key, int value) {
+        Logger.d("Storing KEY : " + key + " Value : " + value);
         if (mContext != null) {
             if (prefs == null) {
                 prefs = mContext.getSharedPreferences(mContext.getResources().getString(R.string.preferences),

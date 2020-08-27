@@ -6,37 +6,64 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home_black_24dp"
             android:title="Home" />
 
         <item
             android:id="@+id/nav_facility"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Facility" />
+            android:title="Facility"
+            android:visible="false" />
+
+        <item
+            android:id="@+id/nav_study"
+            android:icon="@drawable/study"
+            android:title="Study"
+            android:visible="true" />
+
+        <item
+            android:id="@+id/nav_homework"
+            android:icon="@drawable/homework"
+            android:title="Homework"
+            android:visible="true" />
+        <item
+            android:id="@+id/nav_book"
+            android:icon="@drawable/book_icon"
+            android:title="Books"
+            android:visible="true" />
         <item
             android:id="@+id/nav_faculty"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Faculty" />
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Faculty"
+            android:visible="false" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Gallery"
+            android:visible="false" />
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_contact"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_contact_mail_black_24dp"
+                android:iconTint="@color/green_descent"
                 android:title="Contact" />
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
+                android:iconTint="@color/blue_descent"
                 android:title="Share" />
             <item
                 android:id="@+id/nav_aboutus"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_account_circle_black_24dp"
                 android:title="About US" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_power_settings_new_black_24dp"
+                android:iconTint="@color/red_descent"
+                android:title="Logout" />
         </menu>
     </item>
 

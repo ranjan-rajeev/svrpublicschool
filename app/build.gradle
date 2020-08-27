@@ -1,25 +1,39 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 android {
+    signingConfigs {
+        release {
+            storeFile file('D:\\signedapk\\svr\\srv.jks')
+            storePassword 'svrpublicschool'
+            keyAlias 'svrpublicschool'
+            keyPassword 'svrpublicschool'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.svrpublicschool"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "1.0.5"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        signingConfig signingConfigs.release
     }
     buildTypes {
         debug {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("Integer", "SPLASH_WAIT_TIME_IN_SECONDS", "${DEBUG_SPLASH_WAIT_TIME_IN_SECONDS}")
             buildConfigField("Boolean", "IS_IN_DEBUG_MODE", "${DEBUG_IS_IN_DEBUG_MODE}")
             buildConfigField("String", "HOST", "\"${DEBUG_HOST}\"")
         }
         release {
-            shrinkResources true
-            minifyEnabled true
+            shrinkResources false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("Integer", "SPLASH_WAIT_TIME_IN_SECONDS", "${RELEASE_SPLASH_WAIT_TIME_IN_SECONDS}")
             buildConfigField("Boolean", "IS_IN_DEBUG_MODE", "${RELEASE_IS_IN_DEBUG_MODE}")
@@ -40,8 +54,19 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.vectordrawable:vectordrawable:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-database:19.3.1'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    implementation 'com.google.firebase:firebase-auth:19.3.2'
+    implementation 'com.google.firebase:firebase-config:19.2.0'
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-iid:20.2.4'
+    implementation 'com.google.firebase:firebase-messaging:20.2.4'
+    // Recommended: Add the Firebase SDK for Google Analytics.
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    // Add the Firebase Crashlytics SDK.
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
     testImplementation 'junit:junit:4.12'
-    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
 
 
     //    Retrofit for network loading
@@ -58,7 +83,48 @@ dependencies {
 
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
 
-
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    //room
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+    testImplementation "android.arch.persistence.room:testing:$room_version"
+
+    implementation 'com.google.android.play:core:1.8.0'
+
+
+
+    //region unit test dependencies
+
+    // Espresso dependencies
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.expressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.expressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.expressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-accessibility:$rootProject.expressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-web:$rootProject.expressoVersion"
+    androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$rootProject.expressoVersion"
+
+    // Core library
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:core:1.0.0'
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+
+    // Assertions
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.ext:truth:1.2.0'
+
+    //mockito library
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+    androidTestImplementation 'org.mockito:mockito-core:1.10.19'
+
+    //mockserver library
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.okhttp3Version"
+
+    //endregion
+
 }

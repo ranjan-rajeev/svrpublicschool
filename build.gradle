@@ -5,10 +5,12 @@ buildscript {
     repositories {
         google()
         jcenter()
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.1'
-        
+        classpath 'com.google.gms:google-services:4.2.0'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.2.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -33,11 +35,14 @@ ext {
     recyclerviewSdkVersion = '1.1.0'
     rxJavaVersion  = '2.2.10'
     rxAndroidVersion  = '2.1.1'
+    room_version = "2.2.5"
+    expressoVersion ='3.2.0'
 }
 allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 

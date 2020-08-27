@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".fragments.gallery.ZoomActivity"
+    tools:context=".ui.gallery.ZoomActivity"
     tools:showIn="@layout/activity_zoom">
 
-    <com.svrpublicschool.customview.TouchImageView
-        android:id="@+id/ivZoom"
-        android:layout_width="500dp"
-        android:layout_height="500dp" />
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/photo_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:transitionName="imageMain"
+        app:srcCompat="@drawable/one" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content" />
 </LinearLayout>

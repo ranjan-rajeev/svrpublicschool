@@ -19,6 +19,7 @@
         android:singleLine="true"
         android:text="ADMISSION IS GOING ON 2018-19!!!                              ADMISSION IS GOING ON 2018-19!!! "
         android:textColor="@color/white" />
+
     <TextView
         style="@style/TextViewStyle.ExtraLarge"
         android:layout_width="match_parent"

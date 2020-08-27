@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:alpha=".7"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/bg" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/carouselView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:visibility="visible"
+                    app:fillColor="#FFFFFFFF"
+                    app:pageColor="#00000000"
+                    app:radius="6dp"
+                    app:slideInterval="3000"
+                    app:strokeColor="#FF777777"
+                    app:strokeWidth="1dp" />
+
+                <TextView
+                    android:id="@+id/tvAdmisson"
+                    style="@style/TextViewStyle.Large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_descent"
+                    android:ellipsize="marquee"
+                    android:fadingEdge="horizontal"
+                    android:gravity="center"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:padding="5dp"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:text="ADMISSION IS GOING ON 2018-19!!!                              ADMISSION IS GOING ON 2018-19!!! "
+                    android:textColor="@color/white" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTiles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:nestedScrollingEnabled="false" />
+
+                <!-- <RelativeLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:background="?attr/colorAccent"
+                     android:visibility="visible">
+
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerVertical="true"
+                         android:layout_toLeftOf="@+id/tvCall"
+                         android:src="@android:drawable/sym_call_outgoing" />
+
+                     <TextView
+                         android:id="@+id/tvCall"
+                         style="@style/TextViewStyle.Large"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerHorizontal="true"
+                         android:layout_centerVertical="true"
+                         android:gravity="center"
+                         android:padding="10dp"
+                         android:text="+91 - 9835467226"
+                         android:textColor="@color/white" />
+                 </RelativeLayout>
+
+                 <RelativeLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:background="?attr/colorAccent"
+                     android:visibility="visible">
+
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerVertical="true"
+                         android:layout_toLeftOf="@+id/tvEmail"
+                         android:src="@android:drawable/sym_action_email" />
+
+                     <TextView
+                         android:id="@+id/tvEmail"
+                         style="@style/TextViewStyle.Large"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_centerHorizontal="true"
+                         android:layout_centerVertical="true"
+                         android:layout_marginLeft="10dp"
+                         android:gravity="center"
+                         android:text="info@svrpublicschool.com"
+                         android:textColor="@color/white" />
+                 </RelativeLayout>
+
+                 <RelativeLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:background="?attr/colorAccent"
+                     android:padding="8dp"
+                     android:visibility="visible">
+
+                     <View
+                         android:id="@+id/view"
+                         android:layout_width="0dp"
+                         android:layout_height="0dp"
+                         android:layout_centerHorizontal="true"
+                         android:layout_centerVertical="true" />
+
+                     <ImageView
+                         android:id="@+id/fb"
+                         android:layout_width="36dp"
+                         android:layout_height="36dp"
+                         android:layout_marginRight="5dp"
+                         android:layout_toLeftOf="@+id/twitter"
+                         android:src="@drawable/fb_logo" />
+
+                     <ImageView
+                         android:id="@+id/twitter"
+                         android:layout_width="36dp"
+                         android:layout_height="36dp"
+                         android:layout_marginRight="5dp"
+                         android:layout_toLeftOf="@+id/view"
+                         android:src="@drawable/twitter_logo" />
+
+                     <ImageView
+                         android:id="@+id/linked"
+                         android:layout_width="36dp"
+                         android:layout_height="36dp"
+                         android:layout_marginRight="5dp"
+                         android:layout_toRightOf="@id/view"
+                         android:src="@drawable/linkedin_logo" />
+
+                     <ImageView
+                         android:id="@+id/google"
+                         android:layout_width="36dp"
+                         android:layout_height="36dp"
+                         android:layout_toRightOf="@id/linked"
+                         android:src="@drawable/google_logo" />
+
+
+                 </RelativeLayout>-->
+
+
+                <!--<TextView
+                    style="@style/TextViewStyle.ExtraLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="SCHOOL INFORMATION"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/rlSchool"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp">
+
+                    <ImageView
+                        android:id="@+id/ivSchool"
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerInside" />
+
+                    <TextView
+                        style="@style/TextViewStyle.Large"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/ivSchool"
+                        android:text="S.V.R is an English Medium School for boys and girls founded on 2000 in the B.P.C.L. Road ,B.Pakri.Patna-2." />
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/TextViewStyle.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/school_desc"
+                    android:visibility="visible" />
+
+                <TextView
+                    style="@style/TextViewStyle.ExtraLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="OUR FACILITIES"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvFacility"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+
+                <TextView
+                    style="@style/TextViewStyle.ExtraLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="RULE &amp; REGULATION"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />-->
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

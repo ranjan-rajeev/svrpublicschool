@@ -3,7 +3,7 @@ package com.svrpublicschool.database;
 import android.content.Context;
 
 import com.svrpublicschool.R;
-import com.svrpublicschool.home.NavigationItemEntity;
+import com.svrpublicschool.ui.main.NavigationItemEntity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -16,9 +16,6 @@
     <color name="primaryTextColor">#ffffff</color>
 
 
-
-
-
     <color name="divider">#F1F1F1</color>
     <color name="bg">#c9c5c5</color>
     <color name="dashboard_bg">#e3e3e3</color>
@@ -55,7 +52,8 @@
     <color name="white">#ffffff</color>
     <color name="lightGrey">#E0E0E0</color>
     <color name="text_edit_color">#868686</color>
-    <color name="green_descent">#42ceb2</color>
+    <color name="green_descent">#1FD1AD</color>
+    <color name="green_dark">#1ADCB3</color>
     <!--vector colors-->
     <!--<color name="vector_blue">#11408b</color>-->
 
@@ -83,5 +81,34 @@
     <!--<color name="application_primary_text_color">#212121</color>-->
     <!--<color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>-->
+
+    <color name="colorGrey4A">#4A4A4A</color>
+    <color name="border_grey">#E4E4E4</color>
+    <color name="colorGrey21">@color/colorPrimary</color>
+    <color name="colorGrey18">@color/colorPrimaryDark</color>
+    <color name="colorGrey88">#888888</color>
+    <color name="colorGrey8f">#8f8f8f</color>
+    <color name="colorGreyf8">#f8f8f8</color>
+    <color name="colorGreyD8">#d8d8d8</color>
+    <color name="colorGreyEE">#EEEEEE</color>
+    <color name="progressBarColor">#d0d0d0</color>
+    <color name="colorGreen">#a4c639</color>
+    <color name="colorGreenStar">#00ab5a</color>
+    <color name="color_7ed321">#7ed321</color>
+    <color name="color15d69e">#15d69e</color>
+    <color name="color006E63">#006E63</color>
+    <color name="color417505">#417505</color>
+    <color name="color867D7B">#867D7B</color>
+    <color name="price_breakup_savings_text_color">#00964d</color>
+    <color name="no_cost_retry_payment_disclaimer_color">#d88600</color>
+    <color name="colorGreyA5">#a5a5a5</color>
+    <color name="colorGrey79">#797979</color>
+    <color name="colorGreyE2">#e2e2e2</color>
+    <color name="colorWhiteF5">#f5f5f5</color>
+
+    <color name="whatsapp_background">#dcf8c6</color>
+    <color name="whatsapp_text_color">#545a50</color>
+    <color name="whatsapp_pdf_bg">#f0f0f0</color>
+    <color name="whatsapp_image_bg">#c5beb7</color>
 
 </resources>
