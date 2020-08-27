@@ -7,44 +7,35 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Environment;
 import android.os.Handler;
-import android.util.Log;
-import android.view.View;
-
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.InstallState;
@@ -67,10 +58,15 @@ import com.svrpublicschool.Util.Logger;
 import com.svrpublicschool.Util.Utility;
 import com.svrpublicschool.database.DatabaseClient;
 import com.svrpublicschool.database.DatabaseController;
+import com.svrpublicschool.firebase.FirebaseHelper;
 import com.svrpublicschool.models.ChatEntity;
+import com.svrpublicschool.models.ClassEntity;
+import com.svrpublicschool.models.DatabaseVersion;
 import com.svrpublicschool.models.DatabaseVesionModel;
 import com.svrpublicschool.models.GroupDetailsEntity;
+import com.svrpublicschool.models.KeyValueModel;
 import com.svrpublicschool.models.UserEntity;
+import com.svrpublicschool.services.HttpService;
 import com.svrpublicschool.ui.book.BookFragment;
 import com.svrpublicschool.ui.contact.ContactFragment;
 import com.svrpublicschool.ui.facility.FacilityFragment;
@@ -81,10 +77,6 @@ import com.svrpublicschool.ui.homework.HomeworkFragment;
 import com.svrpublicschool.ui.login.LoginBottomSheetDialog;
 import com.svrpublicschool.ui.newdashboard.DashboardFragment;
 import com.svrpublicschool.ui.study.StudyFragment;
-import com.svrpublicschool.models.ClassEntity;
-import com.svrpublicschool.models.DatabaseVersion;
-import com.svrpublicschool.models.KeyValueModel;
-import com.svrpublicschool.services.HttpService;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
@@ -104,7 +96,6 @@ import io.reactivex.schedulers.Schedulers;
 
 import static com.svrpublicschool.Util.Constants.DB_GROUP_DETAILS;
 import static com.svrpublicschool.Util.Constants.DB_VERSION;
-import static com.svrpublicschool.Util.Constants.PAGE_SIZE;
 
 
 public class MainActivity extends BaseActivity
@@ -125,6 +116,7 @@ public class MainActivity extends BaseActivity
 
     private static final int REQUEST_UPDATE = 11;
     private AppUpdateManager mAppUpdateManager;
+    private static boolean updatePopUpShown = false;
 
     @Override
     protected void onStart() {
@@ -137,8 +129,8 @@ public class MainActivity extends BaseActivity
                     || appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS
                     && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE /*AppUpdateType.IMMEDIATE*/)) {
 
-                Snackbar.make(findViewById(R.id.fab), "New version is available to download !!!", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Download", v -> {
+                Snackbar.make(findViewById(R.id.fab), "Let us update your app in background while you continue exploring the app !!!", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Update", v -> {
                             try {
                                 mAppUpdateManager.startUpdateFlowForResult(
                                         appUpdateInfo, AppUpdateType.FLEXIBLE /*AppUpdateType.IMMEDIATE*/, MainActivity.this, REQUEST_UPDATE);
@@ -257,8 +249,54 @@ public class MainActivity extends BaseActivity
 
         new GetLoginUser().execute();
 
+
         //getTestData();
         //updateVersionTodb();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!updatePopUpShown) {
+            checkFirebaseConfigUpdate();
+        }
+    }
+
+    private void checkFirebaseConfigUpdate() {
+        if (Utility.getVersionCode(this) < FirebaseHelper.getServerVersionCode()) {
+            if (FirebaseHelper.getForceUpdate()) {
+                showAppUpdateAlert(false);
+            } else {
+                updatePopUpShown = true;
+                showAppUpdateAlert(true);
+            }
+        }
+    }
+
+    private void showAppUpdateAlert(boolean b) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog alertDialog = builder.create();
+        builder.setTitle("Update SVR Public School ?");
+        builder.setMessage("SVR Public School recommends that you update app to the latest version for better performance.");
+        builder.setCancelable(b);
+        builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                final String appPackageName = MainActivity.this.getPackageName(); // getPackageName() from Context or Activity object
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+            }
+        });
+        if (b) {
+            builder.setNegativeButton("Later", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    alertDialog.dismiss();
+                }
+            });
+        }
+        builder.show();
     }
 
     private void updateUser() {

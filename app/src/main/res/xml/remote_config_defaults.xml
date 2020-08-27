@@ -120,8 +120,10 @@
         <key>force_update</key>
         <value>false</value>
     </entry>
-
-
+    <entry>
+        <key>app_version_code</key>
+        <value>5</value>
+    </entry>
 
 
 </defaultsMap><!-- END xml_defaults -->

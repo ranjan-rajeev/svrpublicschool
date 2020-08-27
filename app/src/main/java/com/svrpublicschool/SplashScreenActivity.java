@@ -1,40 +1,24 @@
 package com.svrpublicschool;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.play.core.appupdate.AppUpdateInfo;
-import com.google.android.play.core.appupdate.AppUpdateManager;
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.InstallState;
 import com.google.android.play.core.install.InstallStateUpdatedListener;
-import com.google.android.play.core.install.model.AppUpdateType;
-import com.google.android.play.core.install.model.UpdateAvailability;
-import com.google.android.play.core.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
+import com.svrpublicschool.Util.Constants;
 import com.svrpublicschool.Util.Logger;
 import com.svrpublicschool.firebase.FirebaseHelper;
 import com.svrpublicschool.ui.main.MainActivity;
 
-import static com.google.android.play.core.install.model.InstallStatus.CANCELED;
-import static com.google.android.play.core.install.model.InstallStatus.DOWNLOADING;
-import static com.google.android.play.core.install.model.InstallStatus.FAILED;
-import static com.google.android.play.core.install.model.InstallStatus.INSTALLED;
-import static com.google.android.play.core.install.model.InstallStatus.PENDING;
 import static com.svrpublicschool.firebase.FirebaseHelper.getBannerList;
 
 public class SplashScreenActivity extends BaseActivity {
@@ -53,8 +37,8 @@ public class SplashScreenActivity extends BaseActivity {
         window.setStatusBarColor(this.getResources().getColor(R.color.primaryDarkColor));
         setContentView(R.layout.activity_splash);
         logo = findViewById(R.id.logo);
-        setUpdateListener();
-        checkAppUpdate(this);
+      /*  setUpdateListener();
+        checkAppUpdate(this);*/
         FirebaseHelper.logAppOpenedEvent(this);
         Logger.d(getBannerList());
         FirebaseApp.initializeApp(this);
@@ -68,7 +52,7 @@ public class SplashScreenActivity extends BaseActivity {
         }, SPLASH_DISPLAY_LENGTH);
     }
 
-    private void setUpdateListener() {
+    /*private void setUpdateListener() {
         installStateUpdatedListener = new InstallStateUpdatedListener() {
             @Override
             public void onStateUpdate(@NonNull InstallState state) {
@@ -91,10 +75,11 @@ public class SplashScreenActivity extends BaseActivity {
                 }
             }
         };
-    }
+    }*/
 
     public void redirectToMain() {
         Intent mainIntent = new Intent(SplashScreenActivity.this, MainActivity.class);
+        mainIntent.putExtra(Constants.INTENT_PARAM_FROM, "SPLASH");
         startActivity(mainIntent);
         finish();
     }
@@ -131,7 +116,7 @@ public class SplashScreenActivity extends BaseActivity {
         FirebaseHelper.getValuesFromFirebaseRemoteConfig();
     }
 
-    private void checkAppUpdate(Context context) {
+    /*private void checkAppUpdate(Context context) {
         // Creates instance of the manager.
         AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(context);
 
@@ -187,6 +172,6 @@ public class SplashScreenActivity extends BaseActivity {
 
     private void launchRestartDialog(AppUpdateManager appUpdateManager) {
 
-    }
+    }*/
 
 }

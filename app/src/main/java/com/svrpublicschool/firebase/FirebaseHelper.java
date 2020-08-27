@@ -23,6 +23,8 @@ public class FirebaseHelper {
     public static final String SCROLL_MESSAGE = "scroll_msg";
     public static final String UPLOAD_ENABLE = "upload_enabled";
     public static final String REALTIME_ENABLED = "realtime_enabled";
+    public static final String VERSION_CODE = "app_version_code";
+    public static final String FORCE_UPDATE = "force_update";
 
 
     public static final String FA_EVENTS_APP_OPENED = "app_opened";
@@ -97,6 +99,14 @@ public class FirebaseHelper {
 
     public static Boolean getRealtimeEnabled() {
         return FirebaseRemoteConfig.getInstance().getBoolean(REALTIME_ENABLED);
+    }
+
+    public static Boolean getForceUpdate() {
+        return FirebaseRemoteConfig.getInstance().getBoolean(FORCE_UPDATE);
+    }
+
+    public static Long getServerVersionCode() {
+        return FirebaseRemoteConfig.getInstance().getLong(VERSION_CODE);
     }
 
 
