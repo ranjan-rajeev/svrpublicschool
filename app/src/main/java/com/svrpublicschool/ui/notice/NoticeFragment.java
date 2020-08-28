@@ -64,26 +64,23 @@ public class NoticeFragment extends BaseFragment implements View.OnClickListener
         new GetLoginUser().executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
         hideShowAdminFeatures();
         setListener();
-        if (Utility.shoulFetchFromServer(this.getActivity(), Constants.SHD_PRF_NOTICE_VERSION, Constants.SHD_PRF_NOTICE_VERSION)) {
-            getNoticeList();
-        } else {
-            new FetchNoticeList().execute();
-        }
-
+        getNoticeList();
         return view;
     }
 
     private void getNoticeList() {
         Logger.d("Fetching notice list from server");
+        showDialog();
         DatabaseReference classRef = database.getReference(Constants.DB_NOTICE);
         classRef.orderByChild("createdAt").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                cancelDialog();
                 noticeEntities.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     try {
                         NoticeEntity noticeEntity = snapshot.getValue(NoticeEntity.class);
-                        noticeEntities.add(0,noticeEntity);
+                        noticeEntities.add(0, noticeEntity);
                         Logger.d("" + noticeEntity.getFid());
                     } catch (Exception e) {
                         Logger.d("Unable to parse");
@@ -95,6 +92,7 @@ public class NoticeFragment extends BaseFragment implements View.OnClickListener
 
             @Override
             public void onCancelled(DatabaseError error) {
+                cancelDialog();
                 Logger.d(error.getMessage());
             }
         });

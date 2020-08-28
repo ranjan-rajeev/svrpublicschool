@@ -29,7 +29,7 @@ public class VideoReceivedViewHolder extends RecyclerView.ViewHolder {
 
     public void setData(Context context, ChatEntity chatEntity) {
         tvTime.setText("" + chatEntity.getCreatedAt());
-        GenericImageLoader.loadImage(context, ivPreview, chatEntity.getUrl(), R.drawable.avtar);
+        GenericImageLoader.loadImage(context, ivPreview, chatEntity.getUrl(), R.drawable.logo);
         rlParent.setOnClickListener(v -> {
         });
     }
